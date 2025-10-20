@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brunch Coffee - Menú Online</title>
+    <link rel="stylesheet" href="ejemplo2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+</head>
+<body>
+
+    <header class="RestaurantewebGhiphub">
+        <img src="imag/LogoBrunchCofee.png" alt="Logo Brunch Coffee" class="logo-header"> 
+        <div class="info-details">
+            <h1>Brunch Coffee</h1>
+            <div class="meta-info">
+                <span><i class="fas fa-star"></i> 4.7</span>
+                <span><i class="fas fa-clock"></i> Abierto hasta las 20:00</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sticky-category-nav">
+        <div class="category-buttons-container">
+            <button class="category-btn active" data-target="cafeteria">Cafetería ☕</button>
+            <button class="category-btn" data-target="desayunos">Desayunos 🥐</button>
+            <button class="category-btn" data-target="licuados">Licuados/Smoothies 🥤</button>
+            <button class="category-btn" data-target="almuerzos">Almuerzos 🍽️</button>
+            <button class="category-btn" data-target="reservas">Reservas 📋</button>
+            <button class="category-btn" data-target="contacto">Contacto 📞</button>
+        </div>
+    </nav>
+
+    <main class="menu-content-wrapper">
+        <section id="menu-list-container">
+
+            <section class="menu-category" id="cafeteria">
+                <h2 class="category-title">Menú de Cafetería Especial</h2>
+                <div class="product-list" id="cafeteria-products"></div>
+            </section>
+
+            <section class="menu-category" id="desayunos">
+                <h2 class="category-title">Menú de Desayunos y Pastelería</h2>
+                <div class="product-list" id="desayunos-products"></div>
+            </section>
+
+            <section class="menu-category" id="licuados">
+                <h2 class="category-title">Menú de Licuados y Smoothies Naturales</h2>
+                <div class="product-list" id="licuados-products"></div>
+            </section>
+
+            <section class="menu-category" id="almuerzos">
+                <h2 class="category-title">Menú de Platos y Opciones de Mediodía</h2>
+                <div class="product-list" id="almuerzos-products"></div>
+            </section>
+
+            <section class="menu-category" id="reservas">
+                <h2 class="category-title">Reservas y VIP</h2>
+                <form class="reservation-form">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" placeholder="Tu DNI" required>
+
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ej: +54 9 376..." required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="tu.email@example.com" required>
+
+                    <label for="tipo">Tipo de Reserva:</label>
+                    <select id="tipo" name="tipo">
+                        <option value="normal">Normal</option>
+                        <option value="vip">VIP</option>
+                    </select>
+
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+
+                    <label for="personas">Cantidad de Personas:</label>
+                    <input type="number" id="personas" name="personas" min="1" value="1" required>
+
+                    <button type="submit" class="submit-btn">Realizar Reserva</button>
+                </form>
+            </section>
+
+            <section class="menu-category" id="contacto">
+                <h2 class="category-title">Contacto y Ubicación</h2>
+                <div class="contact-info-grid">
+                    <p><i class="fas fa-phone"></i> <strong>Teléfono:</strong> +54 376 4000000</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> contacto@brunchcoffee.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Calle Ejemplo 123, Posadas, Misiones</p>
+                    <p><i class="fas fa-clock"></i> <strong>Horario:</strong> Lunes a Sábado de 8:00 a 20:00</p>
+                </div>
+
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1530.0689408018658!2d-55.90159423644264!3d-27.387994248550796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9454148b3294c7b9%3A0x7d6f5c8c5c2d3e4d!2sPlaza%209%20de%20Julio!5e0!3m2!1ses-419!2sar!4v1701389926867!5m2!1ses-419!2sar"
+                    width="100%" height="280" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </section>
+
+        </section>
+    </main>
+    
+    <footer id="floating-cart-bar">
+        <button id="view-cart-summary">
+            <i class="fas fa-shopping-cart"></i> Ver Carrito (<span id="cart-count">0</span> items)
+        </button>
+        <span id="cart-total-summary">$0.00</span>
+    </footer>
+
+    <script src="RestauranteEjemplo.js"></script>
+</body>
+</html>

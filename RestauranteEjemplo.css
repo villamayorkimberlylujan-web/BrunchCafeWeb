@@ -1,0 +1,395 @@
+/* Base y Fondo */
+body {
+    background: url('imag/fondo1.jpg') no-repeat center center fixed; /* Asegúrate que la ruta sea correcta */
+    background-size: cover;
+    color: #333; /* Color de texto más oscuro para mayor contraste */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal si hay elementos fuera de lugar */
+}
+
+/* Capa translúcida sobre el fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.75); /* Capa translúcida blanca, un poco menos transparente */
+    z-index: -1; /* Detrás de todo el contenido */
+}
+
+/* Contenedor principal para el contenido para que esté centrado y tenga un máximo ancho */
+.menu-content-wrapper {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Estilos del Header */
+.restaurant-info-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar elementos en el header */
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo casi blanco para el header */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.logo-header {
+    width: 70px; /* Tamaño más adecuado para el logo */
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #b85c38; /* Borde al logo */
+}
+
+.info-details h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #b85c38; /* Color del título principal */
+}
+
+.meta-info {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.meta-info span {
+    margin-right: 15px;
+}
+
+.meta-info .fas {
+    color: #f7d432; /* Estrellas amarillas */
+    margin-right: 5px;
+}
+
+/* Navegación de Categorías */
+.sticky-category-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.98); /* Fondo casi blanco para la barra de navegación */
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-bottom: 1px solid #eee;
+}
+
+.category-buttons-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Para que los botones se ajusten en pantallas pequeñas */
+    gap: 10px; /* Espacio entre botones */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.category-btn {
+    background-color: #fff;
+    color: #b85c38;
+    border: 2px solid #e0c3a3; /* Borde más suave */
+    padding: 10px 18px;
+    border-radius: 25px; /* Bordes más redondeados */
+    font-weight: 600; /* Un poco más de peso */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    white-space: nowrap; /* Evita que el texto de los botones se rompa */
+}
+
+.category-btn.active,
+.category-btn:hover {
+    background-color: #b85c38;
+    color: #fff;
+    border-color: #b85c38;
+    box-shadow: 0 4px 10px rgba(184, 92, 56, 0.3); /* Sombra al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+/* Secciones de Categoría del Menú */
+.menu-category {
+    background-color: rgba(255, 255, 255, 0.95); /* Menos transparencia para las secciones */
+    margin: 40px auto;
+    padding: 35px 30px; /* Más padding */
+    border-radius: 20px; /* Bordes más redondeados */
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid #f0f0f0; /* Borde sutil */
+}
+
+.category-title {
+    font-size: 2.5rem; /* Título más grande */
+    text-align: center;
+    margin-bottom: 30px;
+    color: #8c462c; /* Color más oscuro para el título */
+    border-bottom: 3px solid #e0c3a3; /* Borde inferior más pronunciado */
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Lista de Productos */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 25px; /* Espacio entre tarjetas */
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column; /* Apilar elementos en la tarjeta */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-image-placeholder {
+    width: 100%;
+    height: 180px; /* Altura fija para las imágenes de producto */
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #eee;
+}
+
+.product-text {
+    padding: 20px;
+    flex-grow: 1; /* Para que el texto ocupe el espacio restante */
+}
+
+.product-text h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #b85c38;
+    font-size: 1.5rem;
+}
+
+.product-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #8c462c;
+    display: block; /* Para que ocupe su propia línea */
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+    background-color: #e0c3a3; /* Un color más cálido */
+    color: #8c462c; /* Texto oscuro para el botón */
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-top: 1px solid #f0e0d0; /* Borde sutil en la parte superior del botón */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #b85c38; /* Color principal al pasar el mouse */
+    color: #fff;
+}
+
+/* Formulario de Reservas y VIP */
+.reservation-form {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 18px; /* Espacio entre elementos del formulario */
+    max-width: 600px; /* Ancho máximo para el formulario */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); /* Sombra interna para un efecto de profundidad */
+}
+
+.reservation-form label {
+    font-weight: 600;
+    color: #b85c38; /* Color de las etiquetas */
+    margin-bottom: 5px;
+    display: block; /* Para que la etiqueta ocupe su propia línea */
+}
+
+.reservation-form input[type="text"],
+.reservation-form input[type="tel"],
+.reservation-form input[type="email"],
+.reservation-form input[type="date"],
+.reservation-form input[type="time"],
+.reservation-form input[type="number"],
+.reservation-form select {
+    width: calc(100% - 20px); /* Ancho completo menos padding */
+    padding: 12px 10px;
+    border: 2px solid #e0c3a3; /* Borde suave */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus {
+    border-color: #b85c38; /* Color de borde al enfocar */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.2); /* Sombra suave al enfocar */
+}
+
+.reservation-form select {
+    -webkit-appearance: none; /* Elimina estilos por defecto de select en Webkit */
+    -moz-appearance: none; /* Elimina estilos por defecto de select en Mozilla */
+    appearance: none; /* Elimina estilos por defecto de select */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23b85c38" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 35px; /* Espacio para el icono */
+}
+
+.submit-btn {
+    background-color: #b85c38;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #8c462c;
+    transform: translateY(-2px);
+}
+
+/* Contacto */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+    color: #555;
+    font-size: 1rem;
+}
+
+.contact-info-grid p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info-grid .fas {
+    color: #b85c38;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Footer (Carrito Flotante) */
+#floating-cart-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4CAF50; /* Verde más atractivo para el carrito */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    box-shadow: 0 -2px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-size: 1.1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#view-cart-summary {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+#view-cart-summary .fas {
+    margin-right: 10px;
+    font-size: 1.3rem;
+}
+
+#cart-total-summary {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .reservation-form {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más grandes */
+    }
+    .reservation-form label, .reservation-form input, .reservation-form select, .submit-btn {
+        grid-column: span 1;
+    }
+    .submit-btn {
+        grid-column: span 2; /* El botón ocupa ambas columnas */
+    }
+}
+
+@media (max-width: 600px) {
+    .restaurant-info-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .logo-header {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .info-details h1 {
+        font-size: 1.8rem;
+    }
+    .meta-info {
+        font-size: 0.85rem;
+    }
+    .category-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    .category-title {
+        font-size: 2rem;
+    }
+    .product-list {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+    .menu-category {
+        padding: 25px 15px;
+    }
+    #floating-cart-bar {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+}
