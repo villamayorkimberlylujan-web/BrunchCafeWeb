@@ -1,3 +1,7 @@
+/* ========================================= */
+/* BASE, FONDO Y ESTRUCTURA GENERAL */
+/* ========================================= */
+
 /* Base y Fondo */
 body {
     background: url('imag/fondo1.jpg') no-repeat center center fixed; /* Asegúrate que la ruta sea correcta */
@@ -29,16 +33,27 @@ body::before {
     padding: 0 15px;
 }
 
+
+/* ========================================= */
+/* HEADER (Barra de Información Principal) */
+/* ========================================= */
 /* Estilos del Header */
 .restaurant-info-bar {
+    /* Fondo con la imagen floral */
+    background: url('imag/fondo1.jpg') no-repeat center center; 
+    background-size: cover; 
+    
+    /* Capa de color blanco semi-transparente sobre la imagen */
+    background-color: rgba(255, 255, 255, 0.75); /* El 0.75 ajusta la transparencia */
+    background-blend-mode: overlay; /* Mezcla el color de fondo con la imagen */
+    
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrar elementos en el header */
-    padding: 15px 20px;
-    background-color: rgba(255, 255, 255, 0.95); /* Fondo casi blanco para el header */
+    justify-content: center;
+    padding: 30px 20px; /* Aumentamos el padding para darle espacio al fondo */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Lo unimos a la barra de categorías si la moviste */
 }
 
 .logo-header {
@@ -71,7 +86,44 @@ body::before {
     margin-right: 5px;
 }
 
-/* Navegación de Categorías */
+
+/* ========================================= */
+/* NAVBAR SUPERIOR (MENÚ HAMBURGUESA) */
+/* (Estilos duplicados del final del código anterior, consolidados aquí para claridad) */
+/* ========================================= */
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    display: none; /* Ocultar por defecto en desktop */
+    cursor: pointer;
+}
+
+
+/* ========================================= */
+/* NAVBAR DE CATEGORÍAS (Sticky) */
+/* ========================================= */
+
 .sticky-category-nav {
     position: sticky;
     top: 0;
@@ -113,6 +165,11 @@ body::before {
     box-shadow: 0 4px 10px rgba(184, 92, 56, 0.3); /* Sombra al pasar el mouse */
     transform: translateY(-2px); /* Pequeño efecto de elevación */
 }
+
+
+/* ========================================= */
+/* SECCIONES DEL MENÚ Y PRODUCTOS */
+/* ========================================= */
 
 /* Secciones de Categoría del Menú */
 .menu-category {
@@ -210,7 +267,11 @@ body::before {
     color: #fff;
 }
 
-/* Formulario de Reservas y VIP */
+
+/* ========================================= */
+/* FORMULARIO DE RESERVAS */
+/* ========================================= */
+
 .reservation-form {
     display: grid;
     grid-template-columns: 1fr; /* Una columna por defecto */
@@ -284,7 +345,11 @@ body::before {
     transform: translateY(-2px);
 }
 
-/* Contacto */
+
+/* ========================================= */
+/* CONTACTO Y UBICACIÓN */
+/* ========================================= */
+
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -306,7 +371,11 @@ body::before {
     font-size: 1.2rem;
 }
 
-/* Footer (Carrito Flotante) */
+
+/* ========================================= */
+/* FOOTER (CARRITO FLOTANTE) */
+/* ========================================= */
+
 #floating-cart-bar {
     position: fixed;
     bottom: 0;
@@ -347,10 +416,15 @@ body::before {
 }
 
 
-/* Responsive Design */
+/* ========================================= */
+/* RESPONSIVE DESIGN (Media Queries) */
+/* ========================================= */
+
+/* Tablet y Desktop (A partir de 768px) */
 @media (min-width: 768px) {
+    /* Formulario de Reservas a dos columnas */
     .reservation-form {
-        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más grandes */
+        grid-template-columns: 1fr 1fr;
     }
     .reservation-form label, .reservation-form input, .reservation-form select, .submit-btn {
         grid-column: span 1;
@@ -358,9 +432,19 @@ body::before {
     .submit-btn {
         grid-column: span 2; /* El botón ocupa ambas columnas */
     }
+
+    /* Ocultar el menú hamburguesa en pantallas grandes */
+    .nav-links {
+        display: flex !important; /* Asegurar que se muestren los enlaces de navegación */
+    }
+    .hamburger {
+        display: none !important;
+    }
 }
 
+/* Móvil (Hasta 600px) */
 @media (max-width: 600px) {
+    /* Header apilado */
     .restaurant-info-bar {
         flex-direction: column;
         text-align: center;
@@ -375,10 +459,14 @@ body::before {
     .meta-info {
         font-size: 0.85rem;
     }
+
+    /* Botones de Categoría más pequeños */
     .category-btn {
         padding: 8px 12px;
         font-size: 0.85rem;
     }
+
+    /* Títulos y secciones */
     .category-title {
         font-size: 2rem;
     }
@@ -388,8 +476,54 @@ body::before {
     .menu-category {
         padding: 25px 15px;
     }
+
+    /* Carrito Flotante */
     #floating-cart-bar {
         padding: 10px 15px;
         font-size: 1rem;
+    }
+}
+
+/* Responsive para el menú hamburguesa (Se activa a 768px o menos) */
+@media (max-width: 768px) {
+    /* Navbar Superior */
+    .nav-links {
+        display: none; /* Ocultar enlaces por defecto */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Debajo del nav-container */
+        right: 0;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.show {
+        display: flex; /* Mostrar cuando se activa la clase 'show' con JS */
+    }
+
+    .hamburger {
+        display: block; /* Mostrar el botón hamburguesa */
+    }
+
+    .category-btn {
+        padding: 12px;
+        font-size: 1.1rem;
+        /* Estilos específicos para los botones dentro del menú hamburguesa */
+        width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    /* Estilo de hover/active para los botones dentro del menú hamburguesa */
+    .category-btn:hover,
+    .category-btn.active {
+        background-color: #e0c3a3; /* Fondo más suave para el menú móvil */
+        color: #b85c38;
+        transform: none;
+        box-shadow: none;
     }
 }
